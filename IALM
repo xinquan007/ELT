@@ -2,13 +2,3 @@
 %   argmin ||E||_1 + lambda*||J||_1 + eta*tr(K*L*K')
 %           + tr[A1'*(Y-D*C-E)] + tr[A2'*(C-J)] + tr[A3'*(C-K)]
 %           + miu/2 * {||D*C + E - Y||_F^2 + ||C-J||_F^2 + ||C-K||_F^2}
-
-% 1. J = argmin lambda/miu * ||J||_1 + 0.5 * ||J-(C+A2/miu)||_F^2;
-%    J = max(0, C + A2/miu - lembda/miu) + min(0, C + A2/miu + lambda/miu);
-% 2. K = (A3 + miu * C) * inv[ eta*(L'+L) + miu * I(numsamples) ];
-% 3. C = inv[ I(numbasis) + D'*D] * ( J+D'*Y -D'*E + (D'*A1-A2-A3)/miu);
-% 4. E = 1/miu * ||E||_1 + 0.5 * ||E-(Y-D*C + A1/miu)||_F^2;
-%    E = max(0, Y-D*C-A1/miu - 1/miu) + min(0, Y-D*C -A1/miu + 1/miu);
-% 5. A1=A1 + miu*(Y-D*C-E) & A2 = A2 + miu*(C-J) & A3 = A3 + miu*(C-K);
-% 6. miu = min(rho * miu, max_miu);
-% 7. check ||T-SC-E||... < tol & ||C-J||... < tol & ||C-K||... < tol;
